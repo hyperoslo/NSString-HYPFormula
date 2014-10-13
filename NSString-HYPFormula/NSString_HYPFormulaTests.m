@@ -18,9 +18,9 @@
 
 - (void)testFormulaString
 {
-    NSDictionary *dictionary = {
-        "first_name" : "John",
-        "last_name"  : "Hyperseed"
+    NSDictionary *dictionary = @{
+        @"first_name" : @"John",
+        @"last_name"  : @"Hyperseed"
     };
 
     NSString *formula = @"first_name last_name";

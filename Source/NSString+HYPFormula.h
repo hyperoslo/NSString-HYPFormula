@@ -10,4 +10,6 @@
 
 @interface NSString (HYPFormula)
 
+- (NSString *)processValues:(NSDictionary *)values;
+
 @end

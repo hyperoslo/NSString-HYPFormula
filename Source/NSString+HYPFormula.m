@@ -10,4 +10,9 @@
 
 @implementation NSString (HYPFormula)
 
+- (NSString *)processValues:(NSDictionary *)values
+{
+    return self;
+}
+
 @end
