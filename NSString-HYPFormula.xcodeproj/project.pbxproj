@@ -13,7 +13,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BD46B0FD19EC4EE30089B713 /* NSString-NSString-HYPFormulaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NSString-NSString-HYPFormulaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD46B0FD19EC4EE30089B713 /* NSString-HYPFormulaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NSString-HYPFormulaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD46B10119EC4EE30089B713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD46B10219EC4EE30089B713 /* NSString_HYPFormulaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSString_HYPFormulaTests.m; sourceTree = "<group>"; };
 		BD46B10719EC4F150089B713 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 		BD46B0FE19EC4EE30089B713 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BD46B0FD19EC4EE30089B713 /* NSString-NSString-HYPFormulaTests.xctest */,
+				BD46B0FD19EC4EE30089B713 /* NSString-HYPFormulaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,9 +81,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BD46B0FC19EC4EE30089B713 /* NSString-NSString-HYPFormulaTests */ = {
+		BD46B0FC19EC4EE30089B713 /* NSString-HYPFormulaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BD46B10619EC4EE30089B713 /* Build configuration list for PBXNativeTarget "NSString-NSString-HYPFormulaTests" */;
+			buildConfigurationList = BD46B10619EC4EE30089B713 /* Build configuration list for PBXNativeTarget "NSString-HYPFormulaTests" */;
 			buildPhases = (
 				BD46B0F919EC4EE30089B713 /* Sources */,
 				BD46B0FA19EC4EE30089B713 /* Frameworks */,
@@ -93,9 +93,9 @@
 			);
 			dependencies = (
 			);
-			name = "NSString-NSString-HYPFormulaTests";
+			name = "NSString-HYPFormulaTests";
 			productName = "NSString-HYPFormula";
-			productReference = BD46B0FD19EC4EE30089B713 /* NSString-NSString-HYPFormulaTests.xctest */;
+			productReference = BD46B0FD19EC4EE30089B713 /* NSString-HYPFormulaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -123,7 +123,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BD46B0FC19EC4EE30089B713 /* NSString-NSString-HYPFormulaTests */,
+				BD46B0FC19EC4EE30089B713 /* NSString-HYPFormulaTests */,
 			);
 		};
 /* End PBXProject section */
@@ -207,7 +207,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "NSString-NSString-HYPFormulaTests";
+				PRODUCT_NAME = "NSString-HYPFormulaTests";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -249,7 +249,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "NSString-NSString-HYPFormulaTests";
+				PRODUCT_NAME = "NSString-HYPFormulaTests";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -266,7 +266,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BD46B10619EC4EE30089B713 /* Build configuration list for PBXNativeTarget "NSString-NSString-HYPFormulaTests" */ = {
+		BD46B10619EC4EE30089B713 /* Build configuration list for PBXNativeTarget "NSString-HYPFormulaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BD46B10419EC4EE30089B713 /* Debug */,
