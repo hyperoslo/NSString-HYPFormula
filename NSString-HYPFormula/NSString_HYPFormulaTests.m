@@ -18,14 +18,15 @@
 
 - (void)testFormulaString
 {
-    NSDictionary *dictionary = @{
+    NSDictionary *values = @{
         @"first_name" : @"John",
         @"last_name"  : @"Hyperseed"
     };
 
-    NSString *formula = @"first_name last_name";
+    NSString *formula = [@"first_name last_name" processValues:values];
+    NSString *expectedResult = [NSString stringWithFormat:@"%@ %@", values[@"first_name"], values[@"last_name"]];
 
-    NSLog(@"formula: %@", [formula processValues:dictionary]);
+    XCTAssert([formula isEqualToString:expectedResult], @"String formula was successfully generated.");
 }
 
 @end
