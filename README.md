@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/hyperoslo/NSString-HYPFormula.svg?style=flat)](https://travis-ci.org/hyperoslo/NSString-HYPFormula)
 
-Creating string based formulas have never been this easy
+Creating and running string-based formulas have never been this easy
 
 ## Contributing
 
