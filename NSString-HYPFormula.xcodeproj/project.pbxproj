@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BD46B10319EC4EE30089B713 /* NSString_HYPFormula.m in Sources */ = {isa = PBXBuildFile; fileRef = BD46B10219EC4EE30089B713 /* NSString_HYPFormula.m */; };
+		BD46B10319EC4EE30089B713 /* NSString_HYPFormulaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD46B10219EC4EE30089B713 /* NSString_HYPFormulaTests.m */; };
 		BD46B10819EC4F150089B713 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = BD46B10719EC4F150089B713 /* .travis.yml */; };
 		BD46B10C19EC4F510089B713 /* NSString+HYPFormula.m in Sources */ = {isa = PBXBuildFile; fileRef = BD46B10B19EC4F510089B713 /* NSString+HYPFormula.m */; };
 /* End PBXBuildFile section */
@@ -15,7 +15,7 @@
 /* Begin PBXFileReference section */
 		BD46B0FD19EC4EE30089B713 /* NSString-NSString-HYPFormulaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NSString-NSString-HYPFormulaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD46B10119EC4EE30089B713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BD46B10219EC4EE30089B713 /* NSString_HYPFormula.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSString_HYPFormula.m; sourceTree = "<group>"; };
+		BD46B10219EC4EE30089B713 /* NSString_HYPFormulaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSString_HYPFormulaTests.m; sourceTree = "<group>"; };
 		BD46B10719EC4F150089B713 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		BD46B10A19EC4F510089B713 /* NSString+HYPFormula.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HYPFormula.h"; sourceTree = "<group>"; };
 		BD46B10B19EC4F510089B713 /* NSString+HYPFormula.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HYPFormula.m"; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 		BD46B0FF19EC4EE30089B713 /* NSString-HYPFormula */ = {
 			isa = PBXGroup;
 			children = (
-				BD46B10219EC4EE30089B713 /* NSString_HYPFormula.m */,
+				BD46B10219EC4EE30089B713 /* NSString_HYPFormulaTests.m */,
 				BD46B10019EC4EE30089B713 /* Supporting Files */,
 			);
 			path = "NSString-HYPFormula";
@@ -145,7 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD46B10C19EC4F510089B713 /* NSString+HYPFormula.m in Sources */,
-				BD46B10319EC4EE30089B713 /* NSString_HYPFormula.m in Sources */,
+				BD46B10319EC4EE30089B713 /* NSString_HYPFormulaTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
