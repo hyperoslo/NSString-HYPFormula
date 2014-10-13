@@ -19,6 +19,7 @@
 		BD46B10719EC4F150089B713 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		BD46B10A19EC4F510089B713 /* NSString+HYPFormula.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HYPFormula.h"; sourceTree = "<group>"; };
 		BD46B10B19EC4F510089B713 /* NSString+HYPFormula.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HYPFormula.m"; sourceTree = "<group>"; };
+		BD46B10D19EC4F710089B713 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +36,7 @@
 		BD46B0E419EC4E700089B713 = {
 			isa = PBXGroup;
 			children = (
+				BD46B10D19EC4F710089B713 /* README.md */,
 				BD46B10719EC4F150089B713 /* .travis.yml */,
 				BD46B10919EC4F440089B713 /* Source */,
 				BD46B0FF19EC4EE30089B713 /* NSString-HYPFormula */,
