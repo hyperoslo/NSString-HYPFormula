@@ -26,4 +26,17 @@
     return [mutableString copy];
 }
 
+- (id)runFormula
+{
+    NSExpression *expression = [NSExpression expressionWithFormat:self];
+    id value = [expression expressionValueWithObject:nil context:nil];
+    return value;
+}
+
+- (id)runFormulaWithDictionary:(NSDictionary *)dictionary
+{
+    NSString *formula = [self processValues:dictionary];
+    return [formula runFormula];
+}
+
 @end

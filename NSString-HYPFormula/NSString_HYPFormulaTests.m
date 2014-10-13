@@ -37,10 +37,22 @@
     };
 
     NSString *formula = [@"hourly_pay * work_per_week" processValues:values];
+    NSNumber *result = [formula runFormula];
+    NSNumber *expectedResult = @4500;
 
-    NSLog(@"formula: %@", formula);
+    XCTAssert([result isEqualTo:expectedResult], @"Result is 4500");
+}
 
+- (void)testShorthandMathFormula
+{
+    NSDictionary *values = @{
+                             @"hourly_pay"    : @150,
+                             @"work_per_week" : @32.5
+                             };
+    NSNumber *expectedResult = @4875;
+    NSNumber *result = [@"hourly_pay * work_per_week" runFormulaWithDictionary:values];
 
+    XCTAssert([result isEqualTo:expectedResult], @"Result is 4875");
 }
 
 @end

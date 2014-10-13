@@ -11,5 +11,7 @@
 @interface NSString (HYPFormula)
 
 - (NSString *)processValues:(NSDictionary *)values;
+- (id)runFormula;
+- (id)runFormulaWithDictionary:(NSDictionary *)dictionary;
 
 @end
