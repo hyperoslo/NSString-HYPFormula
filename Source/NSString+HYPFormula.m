@@ -14,7 +14,7 @@
 {
     __block NSMutableString *mutableString = [self mutableCopy];
 
-    [values enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+    [values enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
         [mutableString replaceOccurrencesOfString:key withString:value options:NSLiteralSearch range:NSMakeRange(0,mutableString.length)];
     }];
 
