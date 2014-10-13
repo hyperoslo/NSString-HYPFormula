@@ -29,4 +29,18 @@
     XCTAssert([formula isEqualToString:expectedResult], @"String formula was successfully generated.");
 }
 
+- (void)testMathFormula
+{
+    NSDictionary *values = @{
+           @"hourly_pay" : @120,
+        @"work_per_week" : @37.5
+    };
+
+    NSString *formula = [@"hourly_pay * work_per_week" processValues:values];
+
+    NSLog(@"formula: %@", formula);
+
+
+}
+
 @end
