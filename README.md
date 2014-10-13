@@ -4,6 +4,15 @@
 
 Creating and running string-based formulas have never been this easy
 
+``` objc
+
+NSDictionary *values = @{
+    @"hourly_pay"    : @150,
+    @"work_per_week" : @32.5
+};
+NSNumber *result = [@"hourly_pay * work_per_week" runFormulaWithDictionary:values];
+```
+
 ## Contributing
 
 1. Fork it
