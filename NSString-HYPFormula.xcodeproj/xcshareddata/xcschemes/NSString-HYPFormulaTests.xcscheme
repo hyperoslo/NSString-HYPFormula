@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BD46B0FC19EC4EE30089B713"
-               BuildableName = "NSString-NSString-HYPFormulaTests.xctest"
+               BuildableName = "NSString-HYPFormulaTests.xctest"
                BlueprintName = "NSString-HYPFormulaTests"
                ReferencedContainer = "container:NSString-HYPFormula.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BD46B0FC19EC4EE30089B713"
-               BuildableName = "NSString-NSString-HYPFormulaTests.xctest"
+               BuildableName = "NSString-HYPFormulaTests.xctest"
                BlueprintName = "NSString-HYPFormulaTests"
                ReferencedContainer = "container:NSString-HYPFormula.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BD46B0FC19EC4EE30089B713"
-            BuildableName = "NSString-NSString-HYPFormulaTests.xctest"
+            BuildableName = "NSString-HYPFormulaTests.xctest"
             BlueprintName = "NSString-HYPFormulaTests"
             ReferencedContainer = "container:NSString-HYPFormula.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BD46B0FC19EC4EE30089B713"
-            BuildableName = "NSString-NSString-HYPFormulaTests.xctest"
+            BuildableName = "NSString-HYPFormulaTests.xctest"
             BlueprintName = "NSString-HYPFormulaTests"
             ReferencedContainer = "container:NSString-HYPFormula.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BD46B0FC19EC4EE30089B713"
-            BuildableName = "NSString-NSString-HYPFormulaTests.xctest"
+            BuildableName = "NSString-HYPFormulaTests.xctest"
             BlueprintName = "NSString-HYPFormulaTests"
             ReferencedContainer = "container:NSString-HYPFormula.xcodeproj">
          </BuildableReference>
