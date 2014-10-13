@@ -12,7 +12,13 @@
 
 - (NSString *)processValues:(NSDictionary *)values
 {
-    return self;
+    __block NSMutableString *mutableString = [self mutableCopy];
+
+    [values enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+        [mutableString replaceOccurrencesOfString:key withString:value options:NSLiteralSearch range:NSMakeRange(0,mutableString.length)];
+    }];
+
+    return [mutableString copy];
 }
 
 @end
