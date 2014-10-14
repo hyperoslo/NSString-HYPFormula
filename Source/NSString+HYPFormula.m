@@ -10,7 +10,7 @@
 
 @implementation NSString (HYPFormula)
 
-- (NSString *)processValues:(NSDictionary *)values
+- (NSString *)hyp_processValues:(NSDictionary *)values
 {
     __block NSMutableString *mutableString = [self mutableCopy];
 
@@ -26,17 +26,17 @@
     return [mutableString copy];
 }
 
-- (id)runFormula
+- (id)hyp_runFormula
 {
     NSExpression *expression = [NSExpression expressionWithFormat:self];
     id value = [expression expressionValueWithObject:nil context:nil];
     return value;
 }
 
-- (id)runFormulaWithDictionary:(NSDictionary *)dictionary
+- (id)hyp_runFormulaWithDictionary:(NSDictionary *)dictionary
 {
-    NSString *formula = [self processValues:dictionary];
-    return [formula runFormula];
+    NSString *formula = [self hyp_processValues:dictionary];
+    return [formula hyp_runFormula];
 }
 
 @end
