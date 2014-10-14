@@ -10,6 +10,7 @@
 		BD46B10319EC4EE30089B713 /* NSString_HYPFormulaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD46B10219EC4EE30089B713 /* NSString_HYPFormulaTests.m */; };
 		BD46B10819EC4F150089B713 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = BD46B10719EC4F150089B713 /* .travis.yml */; };
 		BD46B10C19EC4F510089B713 /* NSString+HYPFormula.m in Sources */ = {isa = PBXBuildFile; fileRef = BD46B10B19EC4F510089B713 /* NSString+HYPFormula.m */; };
+		BDEE2D9919ED05DB00B9BD3E /* NSString-HYPFormula.podspec in Resources */ = {isa = PBXBuildFile; fileRef = BDEE2D9819ED05DB00B9BD3E /* NSString-HYPFormula.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		BD46B10A19EC4F510089B713 /* NSString+HYPFormula.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HYPFormula.h"; sourceTree = "<group>"; };
 		BD46B10B19EC4F510089B713 /* NSString+HYPFormula.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HYPFormula.m"; sourceTree = "<group>"; };
 		BD46B10D19EC4F710089B713 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BDEE2D9819ED05DB00B9BD3E /* NSString-HYPFormula.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "NSString-HYPFormula.podspec"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +39,7 @@
 			isa = PBXGroup;
 			children = (
 				BD46B10D19EC4F710089B713 /* README.md */,
+				BDEE2D9819ED05DB00B9BD3E /* NSString-HYPFormula.podspec */,
 				BD46B10719EC4F150089B713 /* .travis.yml */,
 				BD46B10919EC4F440089B713 /* Source */,
 				BD46B0FF19EC4EE30089B713 /* NSString-HYPFormula */,
@@ -134,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD46B10819EC4F150089B713 /* .travis.yml in Resources */,
+				BDEE2D9919ED05DB00B9BD3E /* NSString-HYPFormula.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
