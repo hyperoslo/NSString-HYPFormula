@@ -23,7 +23,7 @@
         @"last_name"  : @"Hyperseed"
     };
 
-    NSString *formula = [@"first_name last_name" processValues:values];
+    NSString *formula = [@"first_name last_name" hyp_processValues:values];
     NSString *expectedResult = [NSString stringWithFormat:@"%@ %@", values[@"first_name"], values[@"last_name"]];
 
     XCTAssert([formula isEqualToString:expectedResult], @"String formula was successfully generated.");
@@ -36,7 +36,7 @@
         @"work_per_week" : @37.5
     };
 
-    NSString *formula = [@"hourly_pay * work_per_week" processValues:values];
+    NSString *formula = [@"hourly_pay * work_per_week" hyp_processValues:values];
     NSNumber *result = [formula runFormula];
     NSNumber *expectedResult = @4500;
 
@@ -50,7 +50,7 @@
                              @"work_per_week" : @32.5
                              };
     NSNumber *expectedResult = @4875;
-    NSNumber *result = [@"hourly_pay * work_per_week" runFormulaWithDictionary:values];
+    NSNumber *result = [@"hourly_pay * work_per_week" hyp_runFormulaWithDictionary:values];
 
     XCTAssert([result isEqualTo:expectedResult], @"Result is 4875");
 }
