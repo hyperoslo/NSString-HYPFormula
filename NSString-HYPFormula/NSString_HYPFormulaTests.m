@@ -37,7 +37,7 @@
     };
 
     NSString *formula = [@"hourly_pay * work_per_week" hyp_processValues:values];
-    NSNumber *result = [formula runFormula];
+    NSNumber *result = [formula hyp_runFormula];
     NSNumber *expectedResult = @4500;
 
     XCTAssert([result isEqualTo:expectedResult], @"Result is 4500");
