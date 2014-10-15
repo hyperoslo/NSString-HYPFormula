@@ -28,7 +28,14 @@
 
 - (id)runFormula
 {
-    NSExpression *expression = [NSExpression expressionWithFormat:self];
+    NSString *formula = self;
+    formula = [self stringByReplacingOccurrencesOfString:@"," withString:@"."];
+
+    if ([formula rangeOfString:@". "].location != NSNotFound) {
+        return nil;
+    }
+
+    NSExpression *expression = [NSExpression expressionWithFormat:formula];
     id value = [expression expressionValueWithObject:nil context:nil];
     return value;
 }
