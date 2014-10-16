@@ -16,8 +16,8 @@
 
     [values enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
 
-        if (![value isKindOfClass:[NSString class]]) {
-            value = [NSString stringWithFormat:@"%@", value];
+        if (![value isKindOfClass:[NSString class]] && [value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
+            value = [value stringValue];
         }
 
         [mutableString replaceOccurrencesOfString:key withString:value options:NSLiteralSearch range:NSMakeRange(0,mutableString.length)];
