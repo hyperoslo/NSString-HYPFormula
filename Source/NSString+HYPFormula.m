@@ -10,7 +10,7 @@
 
 @implementation NSString (HYPFormula)
 
-- (NSString *)hyp_processValues:(NSDictionary *)values
+- (NSString *)hyp_processValues:(NSDictionary *)dictionary
 {
     NSMutableString *mutableString = [self mutableCopy];
     NSArray *sortedKeysArray = [[dictionary allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *a, NSString *b) {
