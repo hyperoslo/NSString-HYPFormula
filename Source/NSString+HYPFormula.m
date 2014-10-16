@@ -30,24 +30,25 @@
     return [mutableString copy];
 }
 
-- (id)hyp_runFormula
+- (id)hyp_runFormulaWithDictionary:(NSDictionary *)dictionary
 {
-    NSString *formula = [self sanitize];
+    NSString *formula = [[self hyp_processValues:dictionary] sanitize];
 
-    if ([formula rangeOfString:@". "].location != NSNotFound) {
-        return nil;
-    }
+    if ([formula rangeOfString:@". "].location != NSNotFound) return nil;
+
+    if ([self isStringFormula:[dictionary allValues]]) return formula;
 
     NSExpression *expression = [NSExpression expressionWithFormat:formula];
     id value = [expression expressionValueWithObject:nil context:nil];
+
     return value;
 }
 
-- (id)hyp_runFormulaWithDictionary:(NSDictionary *)dictionary
-{
-    NSString *formula = [self hyp_processValues:dictionary];
-    return [formula hyp_runFormula];
-}
+@end
+
+#pragma mark - Private categories
+
+@implementation NSString (HYPFormulaTest)
 
 - (NSString *)sanitize
 {
@@ -70,6 +71,19 @@
     }
 
     return formula;
+}
+
+- (BOOL)isStringFormula:(NSArray *)values
+{
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"1234567890.,+-*/%() "];
+
+    for (id value in values) {
+        if ([value isKindOfClass:[NSString class]]) {
+            return (![[value stringByTrimmingCharactersInSet:set] isEqualToString:@""]);
+        }
+    }
+
+    return NO;
 }
 
 @end
