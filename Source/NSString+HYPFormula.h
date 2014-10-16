@@ -10,7 +10,7 @@
 
 @interface NSString (HYPFormula)
 
-- (NSString *)hyp_processValues:(NSDictionary *)values;
+- (NSString *)hyp_processValues:(NSDictionary *)dictionary;
 - (id)hyp_runFormula;
 - (id)hyp_runFormulaWithDictionary:(NSDictionary *)dictionary;
 

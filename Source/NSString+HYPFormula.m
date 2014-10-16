@@ -12,16 +12,20 @@
 
 - (NSString *)hyp_processValues:(NSDictionary *)values
 {
-    __block NSMutableString *mutableString = [self mutableCopy];
+    NSMutableString *mutableString = [self mutableCopy];
+    NSArray *sortedKeysArray = [[values allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *a, NSString *b) {
+        return a.length < b.length;
+    }];
 
-    [values enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+    for (NSString *key in sortedKeysArray) {
+        id value = values[key];
 
         if (![value isKindOfClass:[NSString class]] && [value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
             value = [value stringValue];
         }
 
         [mutableString replaceOccurrencesOfString:key withString:value options:NSLiteralSearch range:NSMakeRange(0,mutableString.length)];
-    }];
+    }
 
     return [mutableString copy];
 }

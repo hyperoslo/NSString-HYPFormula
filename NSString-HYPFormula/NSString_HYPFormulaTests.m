@@ -20,7 +20,7 @@
 {
     NSDictionary *values = @{
         @"first_name" : @"John",
-        @"last_name"  : @"Hyperseed"
+        @"last_name" : @"Hyperseed"
     };
 
     NSString *formula = [@"first_name last_name" hyp_processValues:values];
@@ -46,13 +46,30 @@
 - (void)testShorthandMathFormula
 {
     NSDictionary *values = @{
-                             @"hourly_pay"    : @150,
+                             @"hourly_pay" : @150,
                              @"work_per_week" : @32.5
                              };
     NSNumber *expectedResult = @4875;
     NSNumber *result = [@"hourly_pay * work_per_week" hyp_runFormulaWithDictionary:values];
 
     XCTAssert([result isEqualTo:expectedResult], @"Result is 4875");
+}
+
+- (void)testAdvancedFormula
+{
+    NSDictionary *values = @{
+                             @"hourly_pay" : @160,
+                             @"hourly_pay_premium_currency" : @"10",
+                             @"hourly_pay_premium_percent"  : @"50",
+                             @"work_per_week" : @37.5
+                             };
+    NSString *stringFormula = @"(hourly_pay * work_per_week/37.5) * (1 + (hourly_pay_premium_percent.0/100)) + hourly_pay_premium_currency";
+    NSString *formula = [stringFormula hyp_processValues:values];
+
+    NSNumber *expectedResult = @250;
+    NSNumber *result = [formula hyp_runFormula];
+
+    XCTAssert([result isEqualTo:expectedResult], @"Result is 250");
 }
 
 @end
