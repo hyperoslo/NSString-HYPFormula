@@ -11,6 +11,7 @@
 @interface NSString (HYPFormulaTest)
 - (NSString *)sanitize;
 - (BOOL)isStringFormula:(NSArray *)values;
+- (BOOL)isValidExpression;
 @end
 
 @interface NSString (HYPFormula)
