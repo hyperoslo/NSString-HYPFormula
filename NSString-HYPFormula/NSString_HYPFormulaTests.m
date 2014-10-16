@@ -20,7 +20,7 @@
 {
     NSDictionary *values = @{
         @"first_name" : @"John",
-        @"last_name"  : @"Hyperseed"
+        @"last_name" : @"Hyperseed"
     };
 
     NSString *formula = [@"first_name last_name" hyp_processValues:values];
@@ -46,7 +46,7 @@
 - (void)testShorthandMathFormula
 {
     NSDictionary *values = @{
-                             @"hourly_pay"    : @150,
+                             @"hourly_pay" : @150,
                              @"work_per_week" : @32.5
                              };
     NSNumber *expectedResult = @4875;
@@ -58,7 +58,7 @@
 - (void)testAdvancedFormula
 {
     NSDictionary *values = @{
-                             @"hourly_pay"    : @160,
+                             @"hourly_pay" : @160,
                              @"hourly_pay_premium_currency" : @"10",
                              @"hourly_pay_premium_percent"  : @"50",
                              @"work_per_week" : @37.5
