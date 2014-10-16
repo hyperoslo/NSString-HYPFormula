@@ -66,8 +66,7 @@
             }
         }
 
-        if (scanner.scanLocation < formula.length)
-            scanner.scanLocation++;
+        if (scanner.scanLocation < formula.length) scanner.scanLocation++;
     }
 
     return formula;
