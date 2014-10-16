@@ -69,8 +69,6 @@
     NSNumber *expectedResult = @250;
     NSNumber *result = [formula hyp_runFormula];
 
-    NSLog(@"\nformula->pre-processed : %@\nformula->post-processed: %@ = %@", stringFormula, formula, result);
-
     XCTAssert([result isEqualTo:expectedResult], @"Result is 250");
 }
 
