@@ -10,7 +10,7 @@
 
 @implementation NSString (HYPFormula)
 
-- (NSString *)processValues:(NSDictionary *)dictionary
+- (NSString *)hyp_processValues:(NSDictionary *)values
 {
     NSMutableString *mutableString = [self mutableCopy];
     NSArray *sortedKeysArray = [[dictionary allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *a, NSString *b) {
@@ -30,7 +30,7 @@
     return [mutableString copy];
 }
 
-- (id)runFormula
+- (id)hyp_runFormula
 {
     NSString *formula = self;
     formula = [self stringByReplacingOccurrencesOfString:@"," withString:@"."];
@@ -44,10 +44,10 @@
     return value;
 }
 
-- (id)runFormulaWithDictionary:(NSDictionary *)dictionary
+- (id)hyp_runFormulaWithDictionary:(NSDictionary *)dictionary
 {
-    NSString *formula = [self processValues:dictionary];
-    return [formula runFormula];
+    NSString *formula = [self hyp_processValues:dictionary];
+    return [formula hyp_runFormula];
 }
 
 @end
