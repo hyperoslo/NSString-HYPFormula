@@ -10,15 +10,15 @@
 
 @implementation NSString (HYPFormula)
 
-- (NSString *)hyp_processValues:(NSDictionary *)dictionary
+- (NSString *)hyp_processValues:(NSDictionary *)values
 {
     NSMutableString *mutableString = [self mutableCopy];
-    NSArray *sortedKeysArray = [[dictionary allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *a, NSString *b) {
+    NSArray *sortedKeysArray = [[values allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *a, NSString *b) {
         return a.length < b.length;
     }];
 
     for (NSString *key in sortedKeysArray) {
-        id value = dictionary[key];
+        id value = values[key];
 
         if (![value isKindOfClass:[NSString class]] && [value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
             value = [value stringValue];
