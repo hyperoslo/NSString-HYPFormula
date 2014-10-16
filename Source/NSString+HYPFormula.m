@@ -38,6 +38,8 @@
 
     if ([self isStringFormula:[dictionary allValues]]) return formula;
 
+    if (![formula isValidExpression]) return nil;
+
     NSExpression *expression = [NSExpression expressionWithFormat:formula];
     id value = [expression expressionValueWithObject:nil context:nil];
 
@@ -71,6 +73,25 @@
     }
 
     return formula;
+}
+
+- (BOOL)isValidExpression
+{
+    NSString *string = [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"(1234567890)"];
+    char firstCharacter = [string characterAtIndex:0];
+    char lastCharacter  = [string characterAtIndex:string.length-1];
+
+    if (![set characterIsMember:lastCharacter]) {
+        return NO;
+    }
+
+    if (![set characterIsMember:firstCharacter]) {
+        return NO;
+    }
+
+    return YES;
 }
 
 - (BOOL)isStringFormula:(NSArray *)values

@@ -100,4 +100,11 @@
     XCTAssert([result isEqualToString:@"John Hyperseed"], @"Display name is John Hyperseed");
 }
 
+- (void)testValidationOnFaultyExpression
+{
+    NSString *expressionString = @"100 * (100.0/100) * 1 + (12.0) + ";
+
+    XCTAssert(![expressionString isValidExpression], @"Expression is not valid");
+}
+
 @end
