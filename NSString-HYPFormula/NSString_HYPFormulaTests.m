@@ -86,4 +86,18 @@
     XCTAssert([result isEqualTo:expectedResult], @"Result is 250");
 }
 
+- (void)testStringFormula
+{
+    NSDictionary *values = @{
+        @"firstName" : @"John",
+        @"lastName"  : @"Hyperseed"
+    };
+
+    NSString *displayNameFormula = @"firstName lastName";
+
+    NSString *result = [displayNameFormula hyp_runFormulaWithDictionary:values];
+
+    XCTAssert([result isEqualToString:@"John Hyperseed"], @"Display name is John Hyperseed");
+}
+
 @end
