@@ -30,23 +30,16 @@
     return [mutableString copy];
 }
 
-- (id)hyp_runFormula
+- (id)hyp_runFormulaWithDictionary:(NSDictionary *)dictionary
 {
-    NSString *formula = [self sanitize];
+    NSString *formula = [[self hyp_processValues:dictionary] sanitize];
 
-    if ([formula rangeOfString:@". "].location != NSNotFound) {
-        return nil;
-    }
+    if ([formula rangeOfString:@". "].location != NSNotFound) return nil;
 
     NSExpression *expression = [NSExpression expressionWithFormat:formula];
     id value = [expression expressionValueWithObject:nil context:nil];
-    return value;
-}
 
-- (id)hyp_runFormulaWithDictionary:(NSDictionary *)dictionary
-{
-    NSString *formula = [self hyp_processValues:dictionary];
-    return [formula hyp_runFormula];
+    return value;
 }
 
 - (NSString *)sanitize
