@@ -55,4 +55,23 @@
     XCTAssert([result isEqualTo:expectedResult], @"Result is 4875");
 }
 
+- (void)testAdvancedFormula
+{
+    NSDictionary *values = @{
+                             @"hourly_pay"    : @160,
+                             @"hourly_pay_premium_currency" : @"10",
+                             @"hourly_pay_premium_percent"  : @"50",
+                             @"work_per_week" : @37.5
+                             };
+    NSString *stringFormula = @"(hourly_pay * work_per_week/37.5) * (1 + (hourly_pay_premium_percent.0/100)) + hourly_pay_premium_currency";
+    NSString *formula = [stringFormula hyp_processValues:values];
+
+    NSNumber *expectedResult = @250;
+    NSNumber *result = [formula hyp_runFormula];
+
+    NSLog(@"\nformula->pre-processed : %@\nformula->post-processed: %@ = %@", stringFormula, formula, result);
+
+    XCTAssert([result isEqualTo:expectedResult], @"Result is 250");
+}
+
 @end
