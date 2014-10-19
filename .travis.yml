@@ -1,4 +1,10 @@
 language: objective-c
 xcode_workspace: Tests/NSString-HYPFormula.xcworkspace
-xcode_scheme: NSString-HYPFormulaTests
-xcode_sdk: iphonesimulator8.0
+matrix:
+  include:
+    - xcode_sdk: iphonesimulator
+      xcode_scheme: NSString-HYPFormulaTests
+before_install: 
+  - brew update
+  - brew unlink xctool
+  - brew install xctool
