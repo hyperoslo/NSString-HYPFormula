@@ -1,0 +1,14 @@
+PODS:
+  - NSString-HYPWordExtractor (1.1)
+
+DEPENDENCIES:
+  - NSString-HYPWordExtractor (from `https://github.com/hyperoslo/NSString-HYPWordExtractor.git`)
+
+EXTERNAL SOURCES:
+  NSString-HYPWordExtractor:
+    :git: https://github.com/hyperoslo/NSString-HYPWordExtractor.git
+
+SPEC CHECKSUMS:
+  NSString-HYPWordExtractor: 4471987f55704424c1339b0f3c0f9951e3539a47
+
+COCOAPODS: 0.34.4
