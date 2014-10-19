@@ -20,5 +20,4 @@ Pod::Spec.new do |s|
   s.source_files = 'Source/'
   s.frameworks = 'Foundation'
   s.requires_arc = true
-  s.dependency 'NSString-HYPWordExtractor', :git => 'https://github.com/hyperoslo/NSString-HYPWordExtractor.git'
 end
