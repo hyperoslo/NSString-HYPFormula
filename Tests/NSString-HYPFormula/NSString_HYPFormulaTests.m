@@ -6,8 +6,9 @@
 //
 //
 
-#import <Cocoa/Cocoa.h>
-#import <XCTest/XCTest.h>
+@import Foundation;
+@import XCTest;
+
 #import "NSString+HYPFormula.h"
 
 @interface NSString_HYPFormula : XCTestCase
@@ -39,7 +40,7 @@
     NSNumber *result = [@"hourly_pay * work_per_week" hyp_runFormulaWithDictionary:values];
     NSNumber *expectedResult = @4500;
 
-    XCTAssert([result isEqualTo:expectedResult], @"Result is 4500");
+    XCTAssert([result isEqualToNumber:expectedResult], @"Result is 4500");
 }
 
 - (void)testShorthandMathFormula
@@ -51,7 +52,7 @@
     NSNumber *expectedResult = @4875;
     NSNumber *result = [@"hourly_pay * work_per_week" hyp_runFormulaWithDictionary:values];
 
-    XCTAssert([result isEqualTo:expectedResult], @"Result is 4875");
+    XCTAssert([result isEqualToNumber:expectedResult], @"Result is 4875");
 }
 
 - (void)testAdvancedFormula
@@ -67,7 +68,7 @@
     NSNumber *expectedResult = @250;
     NSNumber *result = [stringFormula hyp_runFormulaWithDictionary:values];
 
-    XCTAssert([result isEqualTo:expectedResult], @"Result is 250");
+    XCTAssert([result isEqualToNumber:expectedResult], @"Result is 250");
 }
 
 - (void)testFormulaWithStrayDots
@@ -83,7 +84,7 @@
     NSNumber *expectedResult = @250;
     NSNumber *result = [stringFormula hyp_runFormulaWithDictionary:values];
 
-    XCTAssert([result isEqualTo:expectedResult], @"Result is 250");
+    XCTAssert([result isEqualToNumber:expectedResult], @"Result is 250");
 }
 
 - (void)testStringFormula

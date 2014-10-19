@@ -8,6 +8,8 @@
 
 #import "NSString+HYPFormula.h"
 
+#import "NSString+HYPWordExtractor.h"
+
 @implementation NSString (HYPFormula)
 
 - (NSString *)hyp_processValues:(NSDictionary *)values
@@ -32,6 +34,11 @@
 
 - (id)hyp_runFormulaWithDictionary:(NSDictionary *)dictionary
 {
+    NSArray *variables = [self hyp_variables];
+
+    BOOL thereAreMoreVariablesThanValues = ([dictionary allKeys].count < variables.count);
+    if (thereAreMoreVariablesThanValues) return nil;
+
     NSString *formula = [[self hyp_processValues:dictionary] sanitize];
 
     if ([formula rangeOfString:@". "].location != NSNotFound) return nil;
