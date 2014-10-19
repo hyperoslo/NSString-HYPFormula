@@ -24,7 +24,13 @@
         return a.length < b.length;
     }];
 
+    NSInteger foundCount = 0;
+
     for (NSString *key in sortedKeysArray) {
+
+        BOOL keyWasFoundInFormula = ([self rangeOfString:key].location != NSNotFound);
+        if (keyWasFoundInFormula) foundCount++;
+
         id value = values[key];
 
         if (![value isKindOfClass:[NSString class]] && [value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
@@ -33,6 +39,9 @@
 
         [mutableString replaceOccurrencesOfString:key withString:value options:NSLiteralSearch range:NSMakeRange(0,mutableString.length)];
     }
+
+    BOOL numberOfFoundIsDifferentThanNumberOfValues = (foundCount < variables.count);
+    if (numberOfFoundIsDifferentThanNumberOfValues) return nil;
 
     return [mutableString copy];
 }

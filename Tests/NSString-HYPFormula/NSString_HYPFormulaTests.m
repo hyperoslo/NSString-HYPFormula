@@ -135,6 +135,20 @@
     XCTAssert([result isEqualToString:@"John Hyperseed"], @"Display name is John Hyperseed");
 }
 
+- (void)testStringFormulaWithInvalidValue
+{
+    NSDictionary *values = @{
+                             @"firstName" : @"John",
+                             @"hodo": @"hodo"
+                             };
+
+    NSString *displayNameFormula = @"firstName lastName";
+
+    NSString *result = [displayNameFormula hyp_runFormulaWithDictionary:values];
+
+    XCTAssertNil(result, @"Result is nil because values are insufficient.");
+}
+
 - (void)testValidationOnFaultyExpression
 {
     NSString *expressionString = @"100 * (100.0/100) * 1 + (12.0) + ";
