@@ -14,6 +14,11 @@
 
 - (NSString *)hyp_processValues:(NSDictionary *)values
 {
+    NSArray *variables = [self hyp_variables];
+
+    BOOL thereAreMoreVariablesThanValues = ([values allKeys].count < variables.count);
+    if (thereAreMoreVariablesThanValues) return nil;
+
     NSMutableString *mutableString = [self mutableCopy];
     NSArray *sortedKeysArray = [[values allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *a, NSString *b) {
         return a.length < b.length;
@@ -34,18 +39,13 @@
 
 - (id)hyp_runFormulaWithDictionary:(NSDictionary *)dictionary
 {
-    NSArray *variables = [self hyp_variables];
+    NSString *processedFormula = [self hyp_processValues:dictionary];
 
-    BOOL thereAreMoreVariablesThanValues = ([dictionary allKeys].count < variables.count);
-    if (thereAreMoreVariablesThanValues) return nil;
+    if ([self isStringFormula:[dictionary allValues]]) return processedFormula;
 
-    NSString *formula = [[self hyp_processValues:dictionary] sanitize];
+    NSString *formula = [processedFormula sanitize];
 
     if ([formula rangeOfString:@". "].location != NSNotFound) return nil;
-
-    if ([self isStringFormula:[dictionary allValues]]) return formula;
-
-    if (![formula isValidExpression]) return nil;
 
     NSExpression *expression = [NSExpression expressionWithFormat:formula];
     id value = [expression expressionValueWithObject:nil context:nil];
@@ -61,6 +61,8 @@
 
 - (NSString *)sanitize
 {
+    if (![self isValidExpression]) return nil;
+
     NSString *formula = [self stringByReplacingOccurrencesOfString:@"," withString:@"."];
     NSScanner *scanner = [NSScanner scannerWithString:formula];
     NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"1234567890."];

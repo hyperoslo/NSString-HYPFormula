@@ -17,7 +17,7 @@
 
 @implementation NSString_HYPFormula
 
-- (void)testFormulaString
+- (void)testProcessValuesOnStringFormula
 {
     NSDictionary *values = @{
         @"first_name" : @"John",
@@ -28,6 +28,17 @@
     NSString *expectedResult = [NSString stringWithFormat:@"%@ %@", values[@"first_name"], values[@"last_name"]];
 
     XCTAssert([formula isEqualToString:expectedResult], @"String formula was successfully generated.");
+}
+
+- (void)testProcessValuesOnStringFormulaWithInvalidNumberOfValues
+{
+    NSDictionary *values = @{
+                             @"first_name" : @"John"
+                             };
+
+    NSString *formula = [@"first_name last_name" hyp_processValues:values];
+
+    XCTAssertNil(formula, @"Result is nil because values are insufficient.");
 }
 
 - (void)testMathFormula
@@ -41,6 +52,29 @@
     NSNumber *expectedResult = @4500;
 
     XCTAssert([result isEqualToNumber:expectedResult], @"Result is 4500");
+}
+
+- (void)testMathFormulaWithInvalidNumberOfValues
+{
+    NSDictionary *values = @{
+                             @"hourly_pay" : @120
+                             };
+
+    NSNumber *result = [@"hourly_pay * work_per_week" hyp_runFormulaWithDictionary:values];
+
+    XCTAssertNil(result, @"Result is nil because values are insufficient.");
+}
+
+- (void)testMathFormulaWithInvalidValues
+{
+    NSDictionary *values = @{
+                             @"hourly_pay" : @120,
+                             @"hodo" : @200
+                             };
+
+    NSNumber *result = [@"hourly_pay * work_per_week" hyp_runFormulaWithDictionary:values];
+
+    XCTAssertNil(result, @"Result is nil because values are insufficient.");
 }
 
 - (void)testShorthandMathFormula
