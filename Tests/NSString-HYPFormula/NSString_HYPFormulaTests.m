@@ -163,4 +163,9 @@
     XCTAssert(![expressionString isValidExpression], @"Expression is not valid");
 }
 
+- (void)testEmptyExpression
+{
+    XCTAssert((![@"" isValidExpression]), @"Expression is not valid");
+}
+
 @end
