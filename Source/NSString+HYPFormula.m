@@ -12,7 +12,7 @@
 
 @implementation NSString (HYPFormula)
 
-- (NSString *)hyp_processValues:(NSDictionary *)values
+- (NSString *)hyp_processValues:(NSDictionary *)values isStringFormula:(BOOL)isStringFormula
 {
     NSArray *variables = [self hyp_variables];
 
@@ -37,9 +37,11 @@
             value = [value stringValue];
         } else if ([value isKindOfClass:[NSString class]]) {
             NSString *stringValue = (NSString *)value;
-            if (stringValue.length == 0) value = @"0";
+            if (!stringValue || stringValue.length == 0) {
+                value = (isStringFormula) ? @"" : @"0";
+            }
         } else if ([value isKindOfClass:[NSNull class]]) {
-            value = @"0";
+            value = (isStringFormula) ? @"" : @"0";
         }
 
         [mutableString replaceOccurrencesOfString:key withString:value options:NSLiteralSearch range:NSMakeRange(0,mutableString.length)];
@@ -53,9 +55,9 @@
 
 - (id)hyp_runFormulaWithDictionary:(NSDictionary *)dictionary
 {
-    NSString *processedFormula = [self hyp_processValues:dictionary];
-
-    if ([self isStringFormula:[dictionary allValues]]) return processedFormula;
+    BOOL isStringFormula = [self isStringFormula:[dictionary allValues]];
+    NSString *processedFormula = [self hyp_processValues:dictionary isStringFormula:isStringFormula];
+    if (isStringFormula) return processedFormula;
 
     NSString *formula = [processedFormula sanitize];
 

@@ -24,7 +24,7 @@
         @"last_name" : @"Hyperseed"
     };
 
-    NSString *formula = [@"first_name last_name" hyp_processValues:values];
+    NSString *formula = [@"first_name last_name" hyp_processValues:values isStringFormula:YES];
     NSString *expectedResult = [NSString stringWithFormat:@"%@ %@", values[@"first_name"], values[@"last_name"]];
 
     XCTAssert([formula isEqualToString:expectedResult], @"String formula was successfully generated.");
@@ -36,7 +36,7 @@
                              @"first_name" : @"John"
                              };
 
-    NSString *formula = [@"first_name last_name" hyp_processValues:values];
+    NSString *formula = [@"first_name last_name" hyp_processValues:values isStringFormula:YES];
 
     XCTAssertNil(formula, @"Result is nil because values are insufficient.");
 }
@@ -147,6 +147,20 @@
     NSString *result = [displayNameFormula hyp_runFormulaWithDictionary:values];
 
     XCTAssertNil(result, @"Result is nil because values are insufficient.");
+}
+
+- (void)testStringFormulaWithOnlyOneValue
+{
+    NSDictionary *values = @{
+                             @"firstName" : @"John",
+                             @"lastName": @""
+                             };
+
+    NSString *displayNameFormula = @"firstName lastName";
+
+    NSString *result = [displayNameFormula hyp_runFormulaWithDictionary:values];
+
+    XCTAssertEqualObjects(result, @"John ");
 }
 
 - (void)testValidationOnFaultyExpression
