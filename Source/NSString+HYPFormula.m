@@ -52,6 +52,16 @@
 
     if ([self isStringFormula:[dictionary allValues]]) return processedFormula;
 
+    __block BOOL hasEmptyValues = NO;
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+        if ([value isKindOfClass:[NSString class]] && value.length <= 0) {
+            hasEmptyValues = YES;
+            *stop = YES;
+        }
+    }];
+
+    if (hasEmptyValues) return nil;
+
     NSString *formula = [processedFormula sanitize];
 
     if ([formula rangeOfString:@". "].location != NSNotFound) return nil;
