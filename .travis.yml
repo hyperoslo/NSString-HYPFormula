@@ -3,5 +3,6 @@ before_install:
   - brew update
   - brew unlink xctool
   - brew install xctool
+  - brew link xctool
 script:
   - xctool -workspace Tests/NSString-HYPFormula.xcworkspace -scheme NSString-HYPFormulaTests -sdk iphonesimulator build test
