@@ -176,4 +176,17 @@
     XCTAssertEqualObjects(result, expectedResult);
 }
 
+- (void)testEmptyStringValues
+{
+    NSDictionary *values = @{
+                             @"a" : @70,
+                             @"b"  : @"",
+                             @"c"  : @20
+                             };
+    NSNumber *expectedResult = @20;
+    NSNumber *result = [@"(b / a) + c" hyp_runFormulaWithDictionary:values];
+
+    XCTAssertEqualObjects(result, expectedResult);
+}
+
 @end
