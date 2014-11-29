@@ -118,7 +118,7 @@
     NSNumber *expectedResult = @250;
     NSNumber *result = [stringFormula hyp_runFormulaWithDictionary:values];
 
-    XCTAssert([result isEqualToNumber:expectedResult], @"Result is 250");
+    XCTAssertEqualObjects(result, expectedResult);
 }
 
 - (void)testStringFormula
@@ -132,7 +132,7 @@
 
     NSString *result = [displayNameFormula hyp_runFormulaWithDictionary:values];
 
-    XCTAssert([result isEqualToString:@"John Hyperseed"], @"Display name is John Hyperseed");
+    XCTAssertEqualObjects(result, @"John Hyperseed");
 }
 
 - (void)testStringFormulaWithInvalidValue
@@ -163,9 +163,17 @@
     XCTAssertFalse([expressionString isValidExpression]);
 }
 
-- (void)testEmptyExpression
+- (void)testNullValues
 {
-    XCTAssertFalse(([@"" isValidExpression]));
+    NSDictionary *values = @{
+                             @"salary" : @100,
+                             @"bonus"  : [NSNull null],
+                             @"taxes"  : @10
+                            };
+    NSNumber *expectedResult = @90;
+    NSNumber *result = [@"salary + bonus - taxes" hyp_runFormulaWithDictionary:values];
+
+    XCTAssertEqualObjects(result, expectedResult);
 }
 
 @end
