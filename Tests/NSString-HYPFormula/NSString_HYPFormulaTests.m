@@ -153,19 +153,19 @@
 {
     NSString *expressionString = @"100 * (100.0/100) * 1 + (12.0) + ";
 
-    XCTAssert(![expressionString isValidExpression], @"Expression is not valid");
+    XCTAssertFalse([expressionString isValidExpression]);
 }
 
 - (void)testValidationOnOtherEdgeCaseExpression
 {
     NSString *expressionString = @"18387 * (employment_percent.0/100) * 1 + (1.0) + 1";
 
-    XCTAssert(![expressionString isValidExpression], @"Expression is not valid");
+    XCTAssertFalse([expressionString isValidExpression]);
 }
 
 - (void)testEmptyExpression
 {
-    XCTAssert((![@"" isValidExpression]), @"Expression is not valid");
+    XCTAssertFalse(([@"" isValidExpression]));
 }
 
 @end
