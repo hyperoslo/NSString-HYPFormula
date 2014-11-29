@@ -1,4 +1,4 @@
 language: objective-c
 xcode_workspace: Tests/NSString-HYPFormula.xcworkspace
 xcode_scheme: NSString-HYPFormulaTests
--sdk iphonesimulator
+sdk: iphonesimulator
