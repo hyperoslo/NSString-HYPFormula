@@ -35,6 +35,8 @@
 
         if (![value isKindOfClass:[NSString class]] && [value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
             value = [value stringValue];
+        } else if ([value isKindOfClass:[NSNull class]]) {
+            value = @"0";
         }
 
         [mutableString replaceOccurrencesOfString:key withString:value options:NSLiteralSearch range:NSMakeRange(0,mutableString.length)];
