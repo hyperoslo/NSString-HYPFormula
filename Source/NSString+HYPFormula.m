@@ -16,8 +16,8 @@
 {
     NSArray *variables = [self hyp_variables];
 
-    BOOL thereAreMoreVariablesThanValues = ([values allKeys].count < variables.count);
-    if (thereAreMoreVariablesThanValues) return nil;
+    BOOL moreVariablesThanValues = ([values allKeys].count < variables.count);
+    if (moreVariablesThanValues) return nil;
 
     NSMutableString *mutableString = [self mutableCopy];
     NSArray *sortedKeysArray = [[values allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *a, NSString *b) {
