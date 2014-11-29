@@ -35,6 +35,9 @@
 
         if (![value isKindOfClass:[NSString class]] && [value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
             value = [value stringValue];
+        } else if ([value isKindOfClass:[NSString class]]) {
+            NSString *stringValue = (NSString *)value;
+            if (stringValue.length == 0) value = @"0";
         } else if ([value isKindOfClass:[NSNull class]]) {
             value = @"0";
         }
