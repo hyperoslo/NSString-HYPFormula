@@ -120,15 +120,17 @@
 
 - (BOOL)isStringFormula:(NSArray *)values
 {
-    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"1234567890.,+-*/%() "];
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"1234567890.,+-*/\%() "];
+    BOOL isStringFormula = NO;
 
     for (id value in values) {
-        if ([value isKindOfClass:[NSString class]]) {
-            return (![[value stringByTrimmingCharactersInSet:set] isEqualToString:@""]);
+        if (isStringFormula == NO && [value isKindOfClass:[NSString class]]) {
+            isStringFormula = (![[value stringByTrimmingCharactersInSet:set] isEqualToString:@""]);
+            if (isStringFormula) break;
         }
     }
 
-    return NO;
+    return isStringFormula;
 }
 
 @end
