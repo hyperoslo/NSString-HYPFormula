@@ -124,7 +124,7 @@
     BOOL isStringFormula = NO;
 
     for (id value in values) {
-        if (isStringFormula == NO && [value isKindOfClass:[NSString class]]) {
+        if ([value isKindOfClass:[NSString class]]) {
             isStringFormula = (![[value stringByTrimmingCharactersInSet:set] isEqualToString:@""]);
             if (isStringFormula) break;
         }
