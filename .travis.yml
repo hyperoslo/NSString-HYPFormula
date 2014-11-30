@@ -1,8 +1,3 @@
 language: objective-c
-before_install:
-  - brew update
-  - brew unlink xctool
-  - brew install xctool
-  - brew link xctool
-script:
-  - xctool -workspace Tests/NSString-HYPFormula.xcworkspace -scheme NSString-HYPFormulaTests -sdk iphonesimulator build test
+xcode_workspace: Tests/NSString-HYPFormula.xcworkspace
+xcode_scheme: NSString-HYPFormulaTests
