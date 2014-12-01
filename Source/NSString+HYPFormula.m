@@ -12,15 +12,15 @@
 
 @implementation NSString (HYPFormula)
 
-- (NSString *)hyp_processValues:(NSDictionary *)values isStringFormula:(BOOL)isStringFormula
+- (NSString *)hyp_processValuesDictionary:(NSDictionary *)valuesDictionary;
 {
     NSArray *variables = [self hyp_variables];
-
-    BOOL moreVariablesThanValues = ([values allKeys].count < variables.count);
+    BOOL isStringFormula = [self isStringFormulaWithValuesDictionary:valuesDictionary];
+    BOOL moreVariablesThanValues = ([valuesDictionary allKeys].count < variables.count);
     if (moreVariablesThanValues) return nil;
 
     NSMutableString *mutableString = [self mutableCopy];
-    NSArray *sortedKeysArray = [[values allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *a, NSString *b) {
+    NSArray *sortedKeysArray = [[valuesDictionary allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *a, NSString *b) {
         return a.length < b.length;
     }];
 
@@ -31,7 +31,7 @@
         BOOL keyWasFoundInFormula = ([self rangeOfString:key].location != NSNotFound);
         if (keyWasFoundInFormula) foundCount++;
 
-        id value = values[key];
+        id value = valuesDictionary[key];
 
         if (![value isKindOfClass:[NSString class]] && [value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
             value = [value stringValue];
@@ -53,10 +53,10 @@
     return [mutableString copy];
 }
 
-- (id)hyp_runFormulaWithDictionary:(NSDictionary *)dictionary
+- (id)hyp_runFormulaWithValuesDictionary:(NSDictionary *)valuesDictionary
 {
-    BOOL isStringFormula = [self isStringFormula:[dictionary allValues]];
-    NSString *processedFormula = [self hyp_processValues:dictionary isStringFormula:isStringFormula];
+    BOOL isStringFormula = [self isStringFormulaWithValuesDictionary:valuesDictionary];
+    NSString *processedFormula = [self hyp_processValuesDictionary:valuesDictionary];
     if (isStringFormula) return processedFormula;
 
     NSString *formula = [processedFormula sanitize];
@@ -69,11 +69,7 @@
     return value;
 }
 
-@end
-
-#pragma mark - Private categories
-
-@implementation NSString (HYPFormulaTest)
+#pragma mark - Private methods
 
 - (NSString *)sanitize
 {
@@ -118,10 +114,11 @@
     return YES;
 }
 
-- (BOOL)isStringFormula:(NSArray *)values
+- (BOOL)isStringFormulaWithValuesDictionary:(NSDictionary *)valuesDictionary
 {
     NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"1234567890.,+-*/\%() "];
     BOOL isStringFormula = NO;
+    NSArray *values = [valuesDictionary allValues];
 
     for (id value in values) {
         if ([value isKindOfClass:[NSString class]] &&
