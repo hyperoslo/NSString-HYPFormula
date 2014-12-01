@@ -22,6 +22,9 @@
 		BD46B0FD19EC4EE30089B713 /* NSString-HYPFormulaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NSString-HYPFormulaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD46B10119EC4EE30089B713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD46B10219EC4EE30089B713 /* NSString_HYPFormulaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSString_HYPFormulaTests.m; sourceTree = "<group>"; };
+		BD5C100F1A2A139800DB8F9A /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
+		BD60B1741A2A46AF00D806E2 /* NSString-HYPFormula.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = "NSString-HYPFormula.podspec"; path = "../NSString-HYPFormula.podspec"; sourceTree = "<group>"; };
+		BD78C5F31A2B81630002A0D8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F9A3DC6666AD478523C3221C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +72,9 @@
 		BD46B0E419EC4E700089B713 = {
 			isa = PBXGroup;
 			children = (
+				BD78C5F31A2B81630002A0D8 /* README.md */,
+				BD60B1741A2A46AF00D806E2 /* NSString-HYPFormula.podspec */,
+				BD5C100F1A2A139800DB8F9A /* .travis.yml */,
 				1439249E19F38EE7007BC2E4 /* Source */,
 				BD46B0FF19EC4EE30089B713 /* NSString-HYPFormula */,
 				BD46B0FE19EC4EE30089B713 /* Products */,
