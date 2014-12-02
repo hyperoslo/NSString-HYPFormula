@@ -215,23 +215,23 @@
 
 - (void)testIsStringFormulaWithDictionary
 {
-    XCTAssertTrue([@"first_name + last_name" isNumberFormulaWithValuesDictionary:(@{@"first_name" : @1,
-                                                                                     @"last_name" : @2})]);
+    XCTAssertTrue([@"a + b" isNumberFormulaWithValuesDictionary:(@{@"a" : @1,
+                                                                   @"b" : @2})]);
 
-    XCTAssertTrue([@"first_name + last_name" isNumberFormulaWithValuesDictionary:(@{@"first_name" : @"1",
-                                                                                    @"last_name" : @2})]);
+    XCTAssertTrue([@"a + b" isNumberFormulaWithValuesDictionary:(@{@"a" : @"1",
+                                                                   @"b" : @2})]);
 
-    XCTAssertTrue([@"first_name + last_name" isNumberFormulaWithValuesDictionary:(@{@"first_name" : @"1",
-                                                                                    @"last_name" : @"2"})]);
+    XCTAssertTrue([@"a + b" isNumberFormulaWithValuesDictionary:(@{@"a" : @"1",
+                                                                   @"b" : @"2"})]);
 
-    XCTAssertTrue([@"first_name + last_name" isNumberFormulaWithValuesDictionary:(@{@"first_name" : @"1.34",
-                                                                                    @"last_name" : @2})]);
+    XCTAssertTrue([@"a + b" isNumberFormulaWithValuesDictionary:(@{@"a" : @"1.34",
+                                                                   @"b" : @2})]);
 
-    XCTAssertTrue([@"first_name + last_name" isNumberFormulaWithValuesDictionary:(@{@"first_name" : @23.5,
-                                                                                    @"last_name" : @2.3})]);
+    XCTAssertTrue([@"a + b" isNumberFormulaWithValuesDictionary:(@{@"a" : @23.5,
+                                                                   @"b" : @2.3})]);
 
-    XCTAssertTrue([@"first_name + last_name" isNumberFormulaWithValuesDictionary:(@{@"first_name" : @23.5,
-                                                                                    @"last_name" : @"12"})]);
+    XCTAssertTrue([@"a + b" isNumberFormulaWithValuesDictionary:(@{@"a" : @23.5,
+                                                                   @"b" : @"12"})]);
 
     XCTAssertFalse([@"first_name last_name" isNumberFormulaWithValuesDictionary:(@{@"first_name" : @"John",
                                                                                    @"last_name" : @"Hyperseed"})]);
