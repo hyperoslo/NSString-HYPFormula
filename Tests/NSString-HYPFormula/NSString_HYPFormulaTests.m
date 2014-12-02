@@ -14,7 +14,7 @@
 @interface NSString (HYPFormulaPrivate)
 
 - (NSString *)sanitize;
-- (BOOL)isStringFormulaWithValuesDictionary:(NSDictionary *)valuesDictionary;
+- (BOOL)isNumberFormulaWithValuesDictionary:(NSDictionary *)valuesDictionary;
 - (BOOL)isValidExpression;
 
 @end
@@ -215,14 +215,35 @@
 
 - (void)testIsStringFormulaWithDictionary
 {
-    XCTAssertTrue([@"first_name last_name" isStringFormulaWithValuesDictionary:(@{@"first_name" : @"John",
-                                                                                  @"last_name" : @"Hyperseed"})]);
+    XCTAssertTrue([@"a + b" isNumberFormulaWithValuesDictionary:(@{@"a" : @1,
+                                                                   @"b" : @2})]);
 
-    XCTAssertTrue([@"first_name last_name" isStringFormulaWithValuesDictionary:(@{@"first_name" : @"",
-                                                                                  @"last_name" : @"Hyperseed"})]);
+    XCTAssertTrue([@"a + b" isNumberFormulaWithValuesDictionary:(@{@"a" : @"1",
+                                                                   @"b" : @2})]);
 
-    XCTAssertFalse([@"first_name + last_name" isStringFormulaWithValuesDictionary:(@{@"first_name" : @1,
-                                                                                     @"last_name" : @2})]);
+    XCTAssertTrue([@"a + b" isNumberFormulaWithValuesDictionary:(@{@"a" : @"1",
+                                                                   @"b" : @"2"})]);
+
+    XCTAssertTrue([@"a + b" isNumberFormulaWithValuesDictionary:(@{@"a" : @"1.34",
+                                                                   @"b" : @2})]);
+
+    XCTAssertTrue([@"a + b" isNumberFormulaWithValuesDictionary:(@{@"a" : @23.5,
+                                                                   @"b" : @2.3})]);
+
+    XCTAssertTrue([@"a + b" isNumberFormulaWithValuesDictionary:(@{@"a" : @23.5,
+                                                                   @"b" : @"12"})]);
+
+    XCTAssertFalse([@"first_name last_name" isNumberFormulaWithValuesDictionary:(@{@"first_name" : @"John",
+                                                                                   @"last_name" : @"Hyperseed"})]);
+
+    XCTAssertFalse([@"first_name last_name" isNumberFormulaWithValuesDictionary:(@{@"first_name" : @"",
+                                                                                   @"last_name" : @"Hyperseed"})]);
+
+    XCTAssertFalse([@"first_name last_name" isNumberFormulaWithValuesDictionary:(@{@"first_name" : @"",
+                                                                                   @"last_name" : @""})]);
+
+    XCTAssertFalse([@"first_name last_name" isNumberFormulaWithValuesDictionary:(@{@"first_name" : @"John J. Martin",
+                                                                                   @"last_name" : @"Hyperseed"})]);
 }
 
 @end
