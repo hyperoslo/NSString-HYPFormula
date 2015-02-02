@@ -11,7 +11,7 @@
     BOOL moreVariablesThanValues = ([valuesDictionary allKeys].count < variables.count);
     if (moreVariablesThanValues) return nil;
 
-    NSMutableString *mutableString = [self mutableCopy];
+    NSMutableString *mutableString = [[self removeDollarSigns] mutableCopy];
     NSArray *sortedKeysArray = [[valuesDictionary allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *a, NSString *b) {
         return a.length < b.length;
     }];
@@ -65,6 +65,11 @@
 }
 
 #pragma mark - Private methods
+
+- (NSString *)removeDollarSigns
+{
+    return [self stringByReplacingOccurrencesOfString:@"$" withString:@""];
+}
 
 - (NSString *)sanitize
 {
