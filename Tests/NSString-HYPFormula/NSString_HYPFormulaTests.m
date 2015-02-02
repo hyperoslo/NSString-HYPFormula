@@ -246,4 +246,16 @@
                                                                                    @"last_name" : @"Hyperseed"})]);
 }
 
+- (void)testShorthandMathFormulaWithDollarSigns
+{
+    NSDictionary *values = @{
+                             @"hourly_pay" : @150,
+                             @"work_per_week" : @32.5
+                             };
+    NSNumber *expectedResult = @4875;
+    NSNumber *result = [@"$hourly_pay * $work_per_week" hyp_runFormulaWithValuesDictionary:values];
+
+    XCTAssert([result isEqualToNumber:expectedResult], @"Result is 4875");
+}
+
 @end
