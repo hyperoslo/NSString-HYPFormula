@@ -211,6 +211,32 @@
     XCTAssertEqualObjects(result, expectedResult);
 }
 
+- (void)testPercentageInt
+{
+    NSDictionary *values = @{
+                             @"a" : @100,
+                             @"b" : @20,
+                             @"c" : @"30%"
+                             };
+    NSNumber *expectedResult = @400;
+    NSNumber *result = [@"(a + b) / c" hyp_runFormulaWithValuesDictionary:values];
+
+    XCTAssertEqualObjects(result, expectedResult);
+}
+
+- (void)testPercentageFloat
+{
+    NSDictionary *values = @{
+                             @"a" : @100,
+                             @"b" : @20,
+                             @"c" : @"30.5%"
+                             };
+    NSNumber *expectedResult = @36.6;
+    NSNumber *result = [@"(a + b) * c" hyp_runFormulaWithValuesDictionary:values];
+
+    XCTAssertEqualObjects(result, expectedResult);
+}
+
 #pragma mark - Private methods
 
 - (void)testIsStringFormulaWithDictionary

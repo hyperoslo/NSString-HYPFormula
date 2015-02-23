@@ -31,6 +31,11 @@
             NSString *stringValue = (NSString *)value;
             if (!stringValue || stringValue.length == 0) {
                 value = (isNumberFormula) ? @"0" : @"";
+            } else if ([stringValue containsString:@"%"]) {
+                NSRange rangeOfString = [stringValue rangeOfString:@"%"];
+                NSString *realStringValue = [stringValue substringToIndex:rangeOfString.location];
+                NSNumber *realValue = [NSNumber numberWithFloat:([realStringValue floatValue] / 100)];
+                value = [realValue stringValue];
             }
         } else if ([value isKindOfClass:[NSNull class]]) {
             value = (isNumberFormula) ? @"0" : @"";
