@@ -54,7 +54,8 @@
 
     if (isNumberFormula) {
         NSString *formula = [processedFormula sanitize];
-        if ([formula rangeOfString:@". "].location != NSNotFound) return nil;
+        if ([formula rangeOfString:@". "].location != NSNotFound||
+            [formula rangeOfString:@".."].location != NSNotFound) return nil;
 
         NSExpression *expression = [NSExpression expressionWithFormat:formula];
         value = [expression expressionValueWithObject:nil context:nil];
