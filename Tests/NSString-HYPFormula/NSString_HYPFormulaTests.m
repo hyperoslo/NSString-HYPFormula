@@ -211,6 +211,28 @@
     XCTAssertEqualObjects(result, expectedResult);
 }
 
+- (void)testCrashProneFormula {
+    NSDictionary *values = @{@"a":@0,
+                             @"b":@37.5,
+                             @"c":@0,
+                             @"d":@"1...0"
+                             };
+    NSString *formula = @"a * ((b / 37.5) * 100.0 / 100.0) * 1000 * (1 + (c / 100.0)) / 1000 + d";
+    NSNumber *result = [formula hyp_runFormulaWithValuesDictionary:values];
+    XCTAssertNil(result);
+}
+
+- (void)testFormulaWithDotSanitizing {
+    NSDictionary *values = @{@"a":@0,
+                             @"b":@37.5,
+                             @"c":@0,
+                             @"d":@"1...0"
+                             };
+    NSString *secondFormula = @"29963 * ((37.5 / 37.5) * 100.0 / 100.0) * 1000 * (1 + (0 / 100.0)) / 1000 + 3.807.00";
+    NSNumber *secondResult = [secondFormula hyp_runFormulaWithValuesDictionary:values];
+    XCTAssertEqualObjects(secondResult, @(33770));
+}
+
 #pragma mark - Private methods
 
 - (void)testIsStringFormulaWithDictionary
