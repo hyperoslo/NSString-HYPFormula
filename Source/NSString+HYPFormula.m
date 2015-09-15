@@ -47,13 +47,15 @@
 
 - (id)hyp_runFormulaWithValuesDictionary:(NSDictionary *)valuesDictionary
 {
-    BOOL isNumberFormula = [self isNumberFormulaWithValuesDictionary:valuesDictionary];
-    NSString *processedFormula = [self hyp_processValuesDictionary:valuesDictionary];
+    NSString *cleanString = [self removeStrayDots];
+    BOOL isNumberFormula = [cleanString isNumberFormulaWithValuesDictionary:valuesDictionary];
+    NSString *processedFormula = [cleanString hyp_processValuesDictionary:valuesDictionary];
     id value = nil;
 
     if (isNumberFormula) {
         NSString *formula = [processedFormula sanitize];
-        if ([formula rangeOfString:@". "].location != NSNotFound) return nil;
+        if ([formula rangeOfString:@". "].location != NSNotFound||
+            [formula rangeOfString:@".."].location != NSNotFound) return nil;
 
         NSExpression *expression = [NSExpression expressionWithFormat:formula];
         value = [expression expressionValueWithObject:nil context:nil];
@@ -65,6 +67,36 @@
 }
 
 #pragma mark - Private methods
+
+- (NSString *)removeStrayDots
+{
+    NSMutableString *sanitizedString = [self mutableCopy];
+    NSScanner *scanner = [NSScanner scannerWithString:self];
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"1234567890."];
+    NSString *variable;
+    while (!scanner.isAtEnd) {
+        if ([scanner scanCharactersFromSet:set intoString:&variable]) {
+            NSArray *components = [variable componentsSeparatedByString:@"."];
+            NSUInteger numberOfOccurrences = [components count] - 1;
+            if (numberOfOccurrences > 1) {
+                NSMutableString *newString = [NSMutableString new];
+                for (NSString *component in components) {
+                    if ([component isEqual:[components lastObject]]) {
+                        [newString appendString:@"."];
+                    }
+                    [newString appendString:component];
+                }
+                [sanitizedString replaceOccurrencesOfString:variable
+                                                 withString:newString
+                                                    options:NSCaseInsensitiveSearch
+                                                      range:NSMakeRange(0, self.length)];
+            }
+        }
+        if (scanner.scanLocation < self.length) scanner.scanLocation++;
+    }
+
+    return sanitizedString;
+}
 
 - (NSString *)sanitize
 {
