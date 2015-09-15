@@ -81,7 +81,9 @@
 				387EA25586528B54EC65E78E /* Pods */,
 				0F04E7F552E26B7FD1161AB8 /* Frameworks */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		BD46B0FE19EC4EE30089B713 /* Products */ = {
 			isa = PBXGroup;
